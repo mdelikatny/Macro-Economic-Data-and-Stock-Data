@@ -1,4 +1,4 @@
-# Macro-Economic-Data-and-Stock-Data
+# Macro-Economic-Data-and-Stock-Data-for-Data-Analysis-and-Visualization
 
 This Python code uses several libraries to download and analyze financial and macroeconomic data. It first uses the requests and BeautifulSoup libraries to scrape a Wikipedia page for a list of companies in the S&P 500 index. It then uses the yfinance library to download historical stock prices for the companies in the index and saves the data to a CSV file.
 
