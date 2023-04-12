@@ -98,3 +98,45 @@ plt.ylabel('Number of Observations')
 plt.xlabel('Log Return Value')
 plt.show()
 
+frames = [M1, M2, M3, Manufacturing_Composite_Index, AAII_Investor_Sentiment_Data, University_of_Michigan_Consumer_Survey_Index_of_Consumer_Sentiment, NMI_Non_Manufacturing_Index, Effective_Federal_Funds_Rate, S10_Year_Treasury_Constant_Maturity_Rate, Three_Month_Treasury_Bill_Secondary_Market_Rate, Interest_Rates_Discount_Rate_for_United_States, Unemployment, consumer_price_index]
+macrodata = pd.DataFrame()
+macrodata = pd.concat(frames, axis=1)
+macrodata.columns = ['M1', 'M2', 'M3', 'Manufacturing_Composite_Index', 'Bullish', 'Bearish', 'neutral', 'University_of_Michigan_Consumer_Survey_Index_of_Consumer_Sentiment', 'NMI_Non_Manufacturing_Index', 'Effective_Federal_Funds_Rate', 'S10_Year_Treasury_Constant_Maturity_Rate', 'Three_Month_Treasury_Bill_Secondary_Market_Rate', 'Interest_Rates_Discount_Rate_for_United_States', 'Unemployment', 'consumer_price_index']
+macrodata1 = macrodata.fillna(0)
+
+path = os.getcwd()
+FilePathOut = path + '/' + 'Macrodata' + '_hist.csv'
+macrodata1.to_csv(FilePathOut)
+
+plt.plot(S10_Year_Treasury_Constant_Maturity_Rate)
+plt.title('S&P 500 10-Year Treasury Constant Maturity Rate')
+plt.ylabel('Rate')
+
+# Plotting the interest rates
+plt.plot(Effective_Federal_Funds_Rate, label='Effective Federal Funds Rate')
+plt.plot(S10_Year_Treasury_Constant_Maturity_Rate, label='10-Year Treasury Rate')
+plt.plot(Three_Month_Treasury_Bill_Secondary_Market_Rate, label='3-Month Treasury Bill Rate')
+plt.plot(Interest_Rates_Discount_Rate_for_United_States, label='Discount Rate')
+plt.legend(loc='best')
+plt.title('Interest Rates Over Time')
+plt.ylabel('Rate')
+plt.show()
+
+# Plotting the unemployment rate
+plt.plot(Unemployment)
+plt.title('Unemployment Rate Over Time')
+plt.ylabel('Rate')
+plt.show()
+
+# Plotting the consumer price index
+plt.plot(consumer_price_index)
+plt.title('Consumer Price Index Over Time')
+plt.ylabel('Index Value')
+plt.show()
+
+# Plotting the macroeconomic variables
+macrodata1.plot(subplots=True, figsize=(12, 18))
+plt.suptitle('Macroeconomic Variables Over Time')
+plt.show()
+
+
